@@ -8,7 +8,7 @@ class Preprocess:
         print(kwargs)
 
         # cropping
-        self.image = self.image[600:3000, :]
+        self.image = self.image[self.kwargs['vertical_crop'][0]:self.kwargs['vertical_crop'][1], :]
 
         # Binarizing image
         self.image[self.image < 245] = 0
@@ -63,6 +63,6 @@ class Preprocess:
                 tmp = black_pixels[i]
         black_pixel_boundries.append(tmp)
 
-        print('columns position', black_pixel_boundries)
+        print('column boundries', black_pixel_boundries)
         self.cols_boundries = np.reshape(black_pixel_boundries, (2, 2))
         return self
