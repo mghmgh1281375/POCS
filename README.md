@@ -1,2 +1,2 @@
-# POCS
-Principles Of Cognitive Science
+# POCI
+Principles Of Computational Intelligence
