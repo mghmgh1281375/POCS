@@ -76,11 +76,13 @@ class Image:
         return new_image
 
 if __name__ == "__main__":
-    new_image = Image('download.jpeg').resize((100, -1), Image.normal)
-    cv2.imshow('1', new_image)
-    new_image = Image(new_image).resize((275, 183), Image.normal)
-    cv2.imshow('2', new_image)
-    cv2.waitKey()
-    cv2.destroyAllWindows()
+    original = Image('download.jpeg')
+    cv2.imwrite(str(original.image.shape)+'-org.jpg', original.image)
+    new_image = original.resize((100, -1), Image.average)
+    cv2.imwrite(str(new_image.shape)+'.jpg', new_image)
+    new_image = Image(new_image).resize((275, 183), Image.average)
+    cv2.imwrite(str(new_image.shape)+'.jpg', new_image)
+    # cv2.waitKey()
+    # cv2.destroyAllWindows()
 
     
