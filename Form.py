@@ -5,10 +5,12 @@ import numpy as np
 
 from Preprocess import Preprocess
 
+
 def show(title, img):
     cv2.namedWindow(title, cv2.WINDOW_GUI_NORMAL)
     cv2.imshow(title, img)
     cv2.waitKey()
+
 
 def timeit(func):
     def call(*args, **kwargs):
@@ -19,10 +21,11 @@ def timeit(func):
         return ret
     return call
 
+
 class Form:
     def __init__(self, arg):
         """[summary]
-        
+
         Arguments:
             arg {path or np.ndarray} -- if passing np.ndarray, image must be gray mode (one channel)
         """
@@ -31,12 +34,13 @@ class Form:
             self.image = cv2.imread(arg, 0)
         elif type(arg) is np.ndarray:
             self.image = arg
-    
+
     def __del__(self):
         cv2.destroyAllWindows()
 
     def preprocess(self):
-        self.prep_obj = Preprocess(self.image, square_size = 57, vertical_crop=(600, 3000))
+        self.prep_obj = Preprocess(
+            self.image, square_size=57, vertical_crop=(600, 3000))
         self.prep_obj.find_rows().find_cols_boundries()
         return self
 
@@ -44,10 +48,10 @@ class Form:
         """returns row segments
         First segment is handwrite text,
         Others are digits.
-        
+
         Arguments:
             row {[type]} -- [description]
-        
+
         Returns:
             [type] -- [description]
         """
@@ -61,6 +65,6 @@ class Form:
             show('row', row_img)
             show('segment', np.hstack(self.segment_row(row_img)))
 
-if __name__ == '__main__':
-    Form('/home/mohammad/Desktop/Forms/form1/00000010.jpg').preprocess().get_rows()
 
+if __name__ == '__main__':
+    Form('/home/mohammad/Desktop/Forms/form8/00000015.jpg').preprocess().get_rows()
