@@ -4,6 +4,7 @@ import cv2
 import numpy as np
 
 from Preprocess import Preprocess
+from ModelCNN import ModelCNN
 
 
 def show(title, img):
@@ -21,6 +22,11 @@ def timeit(func):
         return ret
     return call
 
+model = ModelCNN()
+model.load_weights('models/model_conv_20181024081423.h5')
+# classes, probas = model.predict_batch(x_test)
+# print('Classes', classes)
+# print('Probas', probas)
 
 class Form:
     def __init__(self, arg):
@@ -55,15 +61,31 @@ class Form:
         Returns:
             [type] -- [description]
         """
-        return [row[:, 260:930], row[:, 970:1076], row[:, 1080:1186], row[:, 1193:1300], row[:, 1340:1444], row[:, 1450:1550]]
+        return [row[:, 260:930], row[:, 970:1072], row[:, 1080:1182], row[:, 1200:1290], row[:, 1340:1440], row[:, 1450:1546]]
 
     def get_rows(self, margin=65):
         for row in self.prep_obj.rows:
             row_img = self.image[
                 int(self.prep_obj.kwargs['vertical_crop'][0] + row - margin):
                 int(self.prep_obj.kwargs['vertical_crop'][0] + row + margin)]
+
+            text, *digits = self.segment_row(row_img)
+            digits = list(map(lambda x: cv2.resize(x, (20, 20)), digits))
+            digits = list(map(lambda x: np.reshape(x, (20, 20, 1)), digits))
+            digits = list(map(lambda x: x/255, digits))
+
+            # print(digits[2])
+            show('row', digits[2])
+            
+
+
+            # print(digits)
+            # print(len(digits)) 
+            # print(digits[0].shape)
+            classes_, probas_ = model.predict_single(digits[2])
+            print(classes_)
             show('row', row_img)
-            show('segment', np.hstack(self.segment_row(row_img)))
+            # show('segment', )
 
 
 if __name__ == '__main__':
