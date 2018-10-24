@@ -29,14 +29,14 @@ class ModelCNN:
         self.model.load_weights(path)
 
     def predict_single(self, image):
-        class_ = self.model.predict_classes([image])[0]
-        proba_ = self.model.predict_proba([image])[0]
+        class_ = self.model.predict_classes(np.expand_dims(image, axis=0))[0]
+        proba_ = self.model.predict_proba(np.expand_dims(image, axis=0))[0]
         return class_, proba_
     
     def predict_batch(self, images):
         classes_ = self.model.predict_classes(images)
         probas_ = self.model.predict_proba(images)
-        return classes_, probas_
+        return (classes_, probas_)
 
     def fit(self, *args, **kwargs):
         return self.model.fit(*args, **kwargs)
