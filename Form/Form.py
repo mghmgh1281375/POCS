@@ -70,7 +70,7 @@ class Form:
         img[zeros] = 1
         img[nonzeros] = 0
         return img
-    
+
     @staticmethod
     def is_blank(img):
         zeros = img == 0
