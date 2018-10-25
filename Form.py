@@ -61,31 +61,45 @@ class Form:
         Returns:
             [type] -- [description]
         """
-        return [row[:, 260:930], row[:, 970:1072], row[:, 1080:1182], row[:, 1200:1290], row[:, 1340:1440], row[:, 1450:1546]]
+        return [row[:, 260:930], row[:, 980:1072], row[:, 1094:1182], row[:, 1200:1290], row[:, 1350:1436], row[:, 1460:1542]]
 
-    def get_rows(self, margin=65):
+    @staticmethod
+    def bin_reverse(img):
+        zeros = img == 0
+        nonzeros = img != 0
+        img[zeros] = 1
+        img[nonzeros] = 0
+        return img
+    
+    @staticmethod
+    def is_blank(img):
+        zeros = img == 0
+        nonzeros = img != 0
+        img[zeros] = 1
+        img[nonzeros] = 0
+        return img
+
+    def get_rows(self, margin_top=40, margin_bottom=20):
         for row in self.prep_obj.rows:
             row_img = self.image[
-                int(self.prep_obj.kwargs['vertical_crop'][0] + row - margin):
-                int(self.prep_obj.kwargs['vertical_crop'][0] + row + margin)]
+                int(self.prep_obj.kwargs['vertical_crop'][0] + row - margin_top):
+                int(self.prep_obj.kwargs['vertical_crop'][0] + row + margin_bottom)]
 
             text, *digits = self.segment_row(row_img)
             digits = list(map(lambda x: cv2.resize(x, (20, 20)), digits))
             digits = list(map(lambda x: np.reshape(x, (20, 20, 1)), digits))
             digits = list(map(lambda x: x/255, digits))
+            # Reverse image
+            digits = [self.bin_reverse(digit) for digit in digits]
 
-            # print(digits[2])
-            show('row', digits[2])
-            
-
-
-            # print(digits)
-            # print(len(digits)) 
-            # print(digits[0].shape)
-            classes_, probas_ = model.predict_single(digits[2])
-            print(classes_)
             show('row', row_img)
-            # show('segment', )
+            for d in digits:
+                show('row', d)
+                # print(digits)
+                # print(len(digits)) 
+                # print(digits[0].shape)
+                classes_, probas_ = model.predict_single(d)
+                print(classes_)
 
 
 if __name__ == '__main__':
