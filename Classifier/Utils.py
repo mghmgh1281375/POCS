@@ -18,6 +18,8 @@ class Distance:
         for i in range(len(X)):
             distances.append(np.sum(np.sqrt(np.power(X[i]-x, 2))))
 
+        distances = np.array(distances)
+        print(distances.shape)
         return distances
         
 
