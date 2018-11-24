@@ -9,11 +9,11 @@ class NearestNeighbor(Classifier):
         super(NearestNeighbor, self).__init__(*args, **kwargs)
     
     def predict(self, X):
-        y = np.array(self.y)
+        # TODO: Incomplete
         ret = []
         for x in X:
-            ret = y[np.argmin(Distance.euclidean_distance(x, self.X), axis=0)]
-        return ret
+            ret = self.y[np.argmin(Distance.euclidean_distance(x, self.X), axis=0)]
+        return np.array(ret)
 
 
 if __name__ == "__main__":
