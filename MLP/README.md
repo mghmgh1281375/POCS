@@ -11,7 +11,8 @@
 |  0 |  1 | 0 |
 |  1 |  0 | 0 |
 |  1 |  1 | 1 |
-![Image of Yaktocat](Loss(AND).svg)
+
+![Image of LOSS](Loss(AND).svg)
 ---
 | x<sub>0</sub> | x<sub>1</sub> | NAND |
 | -- | -- | - |
@@ -19,7 +20,8 @@
 | 0 | 1 | 1 |
 | 1 | 0 | 1 |
 | 1 | 1 | 0 |
-![Image of Yaktocat](Loss(NAND).svg)
+
+![Image of LOSS](Loss(NAND).svg)
 ---
 | x<sub>0</sub> | x<sub>1</sub> | XOR |
 | -- | -- | - |
@@ -27,7 +29,8 @@
 | 0 | 1 | 1 |
 | 1 | 0 | 1 |
 | 1 | 1 | 0 |
-![Image of Yaktocat](Loss(XOR).svg)
+
+![Image of LOSS](Loss(XOR).svg)
 ---
 | x<sub>0</sub> | x<sub>1</sub> | XNOR |
 | -- | -- | - |
@@ -35,7 +38,8 @@
 | 0 | 1 | 0 |
 | 1 | 0 | 0 |
 | 1 | 1 | 1 |
-![Image of Yaktocat](Loss(XNOR).svg)
+
+![Image of LOSS](Loss(XNOR).svg)
 ---
 | x<sub>0</sub> | x<sub>1</sub> | OR |
 | -- | -- | - |
@@ -43,7 +47,8 @@
 | 0 | 1 | 1 |
 | 1 | 0 | 1 |
 | 1 | 1 | 1 |
-![Image of Yaktocat](Loss(OR).svg)
+
+![Image of LOSS](Loss(OR).svg)
 ---
 | x<sub>0</sub> | x<sub>1</sub> | NOR |
 | -- | -- | - |
@@ -51,4 +56,5 @@
 | 0 | 1 | 0 |
 | 1 | 0 | 0 |
 | 1 | 1 | 0 |
-![Image of Yaktocat](Loss(NOR).svg)
+
+![Image of LOSS](Loss(NOR).svg)
