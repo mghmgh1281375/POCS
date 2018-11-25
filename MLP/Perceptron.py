@@ -58,22 +58,50 @@ class Perceptron():
 
 if __name__ == "__main__":
 
-    perceptron = Perceptron(2, 100, 0.1, np.random.rand)
+    
 
     data = {
         'and': {
             'X': np.array([[0, 0], [0, 1], [1, 0], [1, 1]]),
             'Y': [0, 0, 0, 1]
         },
+        'nand': {
+            'X': np.array([[0, 0], [0, 1], [1, 0], [1, 1]]),
+            'Y': [1, 1, 1, 0]
+        },
         'xor': {
             'X': np.array([[0, 0], [0, 1], [1, 0], [1, 1]]),
             'Y': [0, 1, 1, 0]
+        },
+        'xnor': {
+            'X': np.array([[0, 0], [0, 1], [1, 0], [1, 1]]),
+            'Y': [1, 0, 0, 1]
+        },
+        'or': {
+            'X': np.array([[0, 0], [0, 1], [1, 0], [1, 1]]),
+            'Y': [0, 1, 1, 1]
+        },
+        'nor': {
+            'X': np.array([[0, 0], [0, 1], [1, 0], [1, 1]]),
+            'Y': [1, 0, 0, 0]
         }
     }
 
+    perceptron = Perceptron(2, 50, 0.1, np.random.rand)
     perceptron.train(data['and']['X'], data['and']['Y'], callback=lambda x: plot(x, 'Loss (AND)'))
-    print(perceptron.weights)
-    print(perceptron.predict([0, 0]))
-    print(perceptron.predict([0, 1]))
-    print(perceptron.predict([1, 0]))
-    print(perceptron.predict([1, 1]))
+    perceptron = Perceptron(2, 50, 0.1, np.random.rand)
+    perceptron.train(data['nand']['X'], data['nand']['Y'], callback=lambda x: plot(x, 'Loss (NAND)'))
+    perceptron = Perceptron(2, 50, 0.1, np.random.rand)
+    perceptron.train(data['xor']['X'], data['xor']['Y'], callback=lambda x: plot(x, 'Loss (XOR)'))
+    perceptron = Perceptron(2, 50, 0.1, np.random.rand)
+    perceptron.train(data['xnor']['X'], data['xnor']['Y'], callback=lambda x: plot(x, 'Loss (XNOR)'))
+    perceptron = Perceptron(2, 50, 0.1, np.random.rand)
+    perceptron.train(data['or']['X'], data['or']['Y'], callback=lambda x: plot(x, 'Loss (OR)'))
+    perceptron = Perceptron(2, 50, 0.1, np.random.rand)
+    perceptron.train(data['nor']['X'], data['nor']['Y'], callback=lambda x: plot(x, 'Loss (NOR)'))
+
+    # print(perceptron.weights)
+    # print(perceptron.predict([0, 0]))
+    # print(perceptron.predict([0, 1]))
+    # print(perceptron.predict([1, 0]))
+    # print(perceptron.predict([1, 1]))
