@@ -1,10 +1,9 @@
 # Perceptron
----
 
 ![Image of Yaktocat](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcnDefkO3vndfr5CzOewpoBEAURo720xVWSMz2c3TEMaz4XDeHdw)
 
 # Tests
----
+
 | x<sub>0</sub> | x<sub>1</sub> | AND |
 |  - |  - | - |
 |  0 |  0 | 0 |
