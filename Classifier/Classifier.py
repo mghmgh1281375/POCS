@@ -1,8 +1,8 @@
 """ MLP Classifier Base Class """
-
+from abc import ABCMeta, abstractmethod
 import numpy as np
 
-class Classifier:
+class Classifier(metaclass=ABCMeta):
     def __init__(self, *args, **kwargs):
         self.args, self.kwargs = args, kwargs
     
@@ -10,5 +10,6 @@ class Classifier:
         self.X, self.y = X, np.array(y)
         return self
     
+    @abstractmethod
     def predict(self, X):
         pass
