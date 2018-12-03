@@ -11,7 +11,7 @@ def plot(input, title=''):
     plt.savefig(title+'.svg')
     plt.show()
 
-def unified(input): return 1 if input > 0 else 0
+def step_unit(input): return 1 if input > 0 else 0
 
 def mean_squared_error(y, y_): return np.mean(np.power(y - y_, 2))
 
@@ -19,7 +19,7 @@ mse = mean_squared_error
 
 class Perceptron():
 
-    def __init__(self, n_input, epochs, learning_rate=0.01, initializer=np.zeros, activation=unified, loss=mse):
+    def __init__(self, n_input, epochs, learning_rate=0.01, initializer=np.zeros, activation=step_unit, loss=mse):
         self.n_input = n_input
         self.epochs = epochs
         self.learning_rate = learning_rate
