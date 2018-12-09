@@ -6,7 +6,7 @@ import numpy as np
 
 class NearestNeighbor(Classifier):
     def __init__(self, k=1, *args, **kwargs):
-        super(NearestNeighbor, self).__init__(*args, **kwargs)
+        super(NearestNeighbor, self).__init__(k=1, *args, **kwargs)
         self.k = k
     
     def predict(self, X):
