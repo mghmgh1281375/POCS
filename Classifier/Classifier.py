@@ -13,3 +13,6 @@ class Classifier(metaclass=ABCMeta):
     @abstractmethod
     def predict(self, X):
         pass
+
+    def __repr__(self):
+        return str(self.__class__) + ' - ' + str(self.args) + ' - ' + str(self.kwargs)
