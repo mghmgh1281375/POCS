@@ -5,8 +5,8 @@ from Utils import Distance
 import numpy as np
 
 class Parzen(Classifier):
-    def __init__(self, r, *args, **kwargs):
-        super(Parzen, self).__init__(*args, **kwargs)
+    def __init__(self, r=0.1, *args, **kwargs):
+        super(Parzen, self).__init__(r, *args, **kwargs)
         self.r = r
     
     def predict(self, X):
