@@ -66,5 +66,5 @@ class Bayesian(Classifier):
         return probabilities
 
 if __name__ == "__main__":
-    pred = Bayesian().fit([[1, 20], [2, 21], [1, 22], [4, 22]], [1, 0, 1, 0]).predict([2, 2]) or None
+    pred = Bayesian().fit([[1, 20], [2, 21], [1, 22], [4, 22]], [1, 0, 1, 0]).predict([2, 2])
     print(pred)
