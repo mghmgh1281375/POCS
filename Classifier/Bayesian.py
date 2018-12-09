@@ -49,6 +49,7 @@ class Bayesian(Classifier):
         return summaries
 
     def __probability__(self, x, mean_val, stdev_val):
+        stdev_val = stdev_val + 0.0001 # NOTE: To prevent from zero standard deviation
         power_val = np.power(x-mean_val,2)
         two_power_val = (2*np.power(stdev_val,2))
         exponent = np.exp(-(power_val/two_power_val))
@@ -65,5 +66,5 @@ class Bayesian(Classifier):
         return probabilities
 
 if __name__ == "__main__":
-    pred = Bayesian().fit([[1, 20], [2, 21], [3, 22], [4, 22]], [1, 0, 1, 0]).predict([2, 2]) or None
+    pred = Bayesian().fit([[1, 20], [2, 21], [1, 22], [4, 22]], [1, 0, 1, 0]).predict([2, 2]) or None
     print(pred)
