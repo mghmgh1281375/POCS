@@ -10,7 +10,7 @@ class Bayesian(Classifier):
         super(Bayesian, self).__init__(*args, **kwargs)
 
     def fit(self, X, Y):
-        self.X, self.Y = np.array(X), np.array(Y)
+        self.X, self.Y = X, Y
         self.summaries = self.__summarize_by_class__(X, Y)
         return self
 
@@ -57,13 +57,12 @@ class Bayesian(Classifier):
         return retval
 
     def predict(self, X):
-        X = np.array(X)
         probabilities = {}
         for y, classSummaries in self.summaries.items():
             probabilities[y] = 1
             for i in range(len(classSummaries)):
                 probabilities[y] *= self.__probability__(X[i], *classSummaries[i])
-        return probabilities
+        return [max(probabilities, key=lambda x: probabilities[x])]
 
 if __name__ == "__main__":
     pred = Bayesian().fit([[1, 20], [2, 21], [1, 22], [4, 22]], [1, 0, 1, 0]).predict([2, 2])
